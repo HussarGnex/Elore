@@ -1,0 +1,20 @@
+<div *ngIf="service.isLoggedIn()">
+  <header class="row spacing">
+    <nav class="col-md-8 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li routerLinkActive="active">
+          <a [routerLink]="['/courses']">Kursy</a>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/profile']">Profil</a>
+          </li>
+          <li routerLinkActive="active" *ngIf="admin">
+            <a [routerLink]="['/admin']">Panel Administratora</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/logout']">Wyloguj</a>
+          </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<router-outlet></router-outlet>

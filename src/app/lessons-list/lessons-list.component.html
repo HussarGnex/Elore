@@ -1,0 +1,16 @@
+<div class="row padding-top-5" *ngIf="Course">
+  <div class="col-md-4">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let lesson of Course.lesson" (click)="selectLesson(lesson)">
+        {{ lesson.title }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="selectedLesson" class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tytuł: {{ selectedLesson.title }}</div>
+      <div class="panel-body">Opis:
+        <br>{{ selectedLesson.content }}</div>
+    </div>
+  </div>
+</div>

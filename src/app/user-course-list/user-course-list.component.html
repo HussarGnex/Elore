@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-5">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let Course of Courses" (click)="selectCourse(Course)" [class.active]="Course === selectedCourse">
+        {{ Course.title }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="selectedCourse" class="col-md-5 col-md-offset-2">
+    <app-user-course-details [Course]="selectedCourse"></app-user-course-details>
+  </div>
+</div>

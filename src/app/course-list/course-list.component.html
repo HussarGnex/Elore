@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-4 padding-top-5">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let course of courses" (click)="selectCourse(course)" [class.active]="course === selectedCourse">
+        {{ course.title }} {{ course.author }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="selectedCourse" class="col-md-8">
+    <app-course-form [Course]="selectedCourse" [addHandler]="addCourse.bind(this)" [updateHandler]="updateCourse.bind(this)"
+      [deleteHandler]="deleteCourse.bind(this)">
+    </app-course-form>
+  </div>
+</div>

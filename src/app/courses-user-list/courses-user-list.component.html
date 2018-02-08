@@ -1,0 +1,36 @@
+<div class="row padding-top-5">
+  <div class="col-md-5">
+    <ul class="list-group">
+      <ng-container *ngFor="let course of courses">
+        <li class="list-group-item" *ngIf="isAuthor(course)" (click)="selectCourse(course)" [class.active]="course === selectedCourse">
+          {{ course.title }} {{ course.author }}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div *ngIf="selectedCourse" class="col-md-5">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <b>Tytuł:</b> {{ selectedCourse.title }}
+        <br>
+        <b>Opis:</b> {{ selectedCourse.description }}
+        <hr>
+        <b>Lekcje:</b>
+        <br>
+        <i *ngIf="selectedCourse.lesson.length == 0">Brak lekcji!</i>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let lesson of selectedCourse.lesson">
+            {{ lesson.title }}
+          </li>
+        </ul>
+      </div>
+      <div class="panel-footer">
+        <button class="btn btn-primary" *ngIf="show(selectedCourse)" (click)="manage()">Zarządzaj kursem</button>
+        <button class="btn btn-primary" *ngIf="!show(selectedCourse)" (click)="join()">Dołącz do kursu</button>
+        <button class="btn btn-primary" (click)="showLessons()">Pokaż lekcje</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

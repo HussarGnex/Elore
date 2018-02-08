@@ -1,0 +1,67 @@
+<div [ngClass]="divClasses()" class="padding-top-5" *ngIf="User">
+  <h4 *ngIf="User._id">Szczegóły</h4>
+  <form [formGroup]="form">
+    <div class="panel panel-default">
+      <div class="panel-body form-horizontal payment-form">
+        <div formGroupName="account">
+          <div class="form-group">
+            <label for="login" class="col-sm-3 control-label">Nazwa użytkownika:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="login" [(ngModel)]="User.login" formControlName="login" id="login">
+            </div>
+          </div>
+          <div *ngIf="login.touched && login.invalid">
+            <div class="alert alert-danger" *ngIf="login.errors.required">Nazwa użytkownika jest wymagana!</div>
+            <div class="alert alert-danger" *ngIf="login.errors.minlength">Nazwa użytkownika jest za krotki!!</div>
+          </div>
+          <div class="form-group" *ngIf="!User._id">
+            <label for="password" class="col-sm-3 control-label">Hasło: </label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" [(ngModel)]="User.password" formControlName="password" id="password" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email:</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" name="email" [(ngModel)]="User.email" formControlName="email" id="email">
+            </div>
+          </div>
+        </div>
+        <div formGroupName="userInfo">
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Imię:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="name" [(ngModel)]="User.name" formControlName="name" id="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="surname" class="col-sm-3 control-label">Nazwisko:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="surname" [(ngModel)]="User.surname" formControlName="surname" id="surname">
+            </div>
+          </div>
+        </div>
+        <div *ngIf="form.errors">
+          <div class="alert alert-success" *ngIf="form.errors.userAdded">
+            Użytkownik dodany do bazy danych!!
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12 text-right">
+            <button *ngIf="!User._id" type="button" class="btn btn-success preview-add-button" (click)="addUser(User)">
+              <span class="glyphicon glyphicon-plus"></span> Dodaj
+            </button>
+            <div *ngIf="User._id">
+              <button type="button" class="btn btn-primary preview-add-button" (click)="updateUser(User)">
+                <span class="glyphicon glyphicon-pencil"></span> Aktualizuj
+              </button>
+              <button type="button" class="btn btn-danger preview-add-button" (click)="deleteUser(User)">
+                <span class="glyphicon glyphicon-remove"></span> Usuń
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

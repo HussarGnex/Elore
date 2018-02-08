@@ -1,0 +1,16 @@
+<header class="row spacing">
+  <nav class="col-md-8 col-md-offset-2">
+    <ul class="nav nav-tabs">
+      <li routerLinkActive="active">
+        <a [routerLink]="['list']">Lista użytkowników</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['add']">Dodaj użytkownika</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['search']">Szukaj użytkownika</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<router-outlet></router-outlet>

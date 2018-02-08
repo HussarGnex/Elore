@@ -1,0 +1,19 @@
+<header class="row">
+  <nav class="col-md-8 col-md-offset-2">
+    <ul class="nav nav-pills">
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin/courses/list']">Lista kursów</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin/courses/add']">Dodaj kurs</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin/users/list']">Lista użytkowników</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin/users/add']">Dodaj użytkownika</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<router-outlet></router-outlet>

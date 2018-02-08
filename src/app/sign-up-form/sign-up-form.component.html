@@ -1,0 +1,68 @@
+<div class="login-box">
+  <form [formGroup]="form" (ngSubmit)="register()">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>Rejestracja</b>
+        <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span>
+      </div>
+      <div class="panel-body">
+        <div class="form-group has-primary has-feedback">
+          <div formGroupName="account">
+            <label class="control-label" for="username">Login:
+              <span class="regForm text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" formControlName="username" name="username" id="username" aria-describedby="username"
+              required>
+            <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+            <div *ngIf="username.touched && username.invalid">
+              <div *ngIf="username.errors.required">Login jest wymagany!</div>
+              <div *ngIf="username.errors.minlength">Login jest zbyt krótki!!</div>
+            </div>
+            <div class="form-group has-primary has-feedback">
+              <label class="control-label" for="password">Hasło:
+                <span class="regForm text-danger">*</span>
+              </label>
+              <input type="password" class="form-control" formControlName="password" name="password" id="password" aria-describedby="password"
+                required>
+              <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
+            </div>
+            <div class="form-group has-primary has-feedback">
+              <label class="control-label" for="email">Email:
+                <span class="regForm text-danger">*</span>
+              </label>
+              <input type="email" class="form-control" formControlName="email" name="email" id="email" aria-describedby="email" required>
+              <span class="glyphicon glyphicon-envelope form-control-feedback" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group has-primary has-feedback">
+          <div formGroupName="userInfo">
+            <label class="control-label" for="name">Imię:
+              <span class="regForm text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" formControlName="name" name="name" id="name" aria-describedby="name" required>
+            <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+
+            <div class="form-group has-primary has-feedback">
+              <label class="control-label" for="surname">Nazwisko:
+                <span class="regForm text-danger">*</span>
+              </label>
+              <input type="text" class="form-control" formControlName="surname" name="surname" id="surname" aria-describedby="surname"
+                required>
+              <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+            </div>
+            <div *ngIf="form.errors">
+              <div *ngIf="form.errors.userAdded">
+                Użytkownik dodany do bazy danych!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <input type="submit" class="btn btn-success" id="goToChat" value="Rejestracja" />
+        <a class="btn btn-warning pull-right" (click)="loginPage()">Logowanie</a>
+      </div>
+    </div>
+  </form>
+</div>

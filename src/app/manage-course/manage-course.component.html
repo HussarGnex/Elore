@@ -1,0 +1,67 @@
+<div class="row padding-top-5" *ngIf="course">
+  <div class="col-md-5 panel panel-default">
+    <p>
+      <b>Tytuł:</b> {{ course.title }}
+    </p>
+    <p>
+      <b>Opis:</b> {{ course.description }}
+    </p>
+    <br>
+    <b>
+      <i>Uczestnicy kursu: </i>
+    </b>
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let allowed of course.allowedUsers">
+        {{ allowed }}
+        <button class="btn btn-danger btn-xs pull-right" (click)="remove(allowed)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </li>
+    </ul>
+    <br>
+    <b>
+      <i>Oczekujący: </i>
+    </b>
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let pending of course.pendingUsers">
+        {{ pending }}
+        <button class="btn btn-danger btn-xs pull-right" (click)="removePending(pending)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        <button class="btn btn-success btn-xs pull-right" (click)="moveToAllowed(pending)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </button>
+      </li>
+    </ul>
+    <br>
+    <b>
+      <i>Lekcje: </i>
+    </b>
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let lesson of course.lesson">
+        {{ lesson.title }}
+        <button class="btn btn-danger btn-xs pull-right" (click)="removeLesson(lesson)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </li>
+    </ul>
+    <br>
+    <button class="btn btn-success btn-sm" (click)="accept()">Akceptuj zmiany</button>
+  </div>
+  <div class="col-md-5 col-md-offset-1 panel panel-default">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let user of users">
+        {{ user.name }} {{ user.surname }}
+        <button class="btn btn-success btn-xs pull-right" (click)="add(user._id)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-5 col-md-offset-1 panel panel-default">
+    <app-lesson-form [addHandler]="addLesson.bind(this)" [removeHandler]="removeLesson.bind(this)"></app-lesson-form>
+  </div>
+</div>

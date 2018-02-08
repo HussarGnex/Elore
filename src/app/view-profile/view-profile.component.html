@@ -1,0 +1,26 @@
+<div class="row" *ngIf="user">
+  <div class="col-md-4 col-md-offset-4 text-center padding-top-5">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <b>Login: </b>{{ user.login }}</li>
+      <li class="list-group-item">
+        <b>Imię: </b>{{ user.name }}</li>
+      <li class="list-group-item">
+        <b>Nazwisko: </b>{{ user.surname }}</li>
+      <li class="list-group-item">
+        <b>Email: </b>{{ user.email }}</li>
+    </ul>
+    <h2>Uczestnik:</h2>
+    <ul class="list-group">
+      <li *ngFor="let course of user.course" class="list-group-item">
+        <a [routerLink]="['/courses/show']" [queryParams]="{ id: course}">{{course}}</a>
+      </li>
+    </ul>
+    <i *ngIf="user.course.length == 0">Brak!</i>
+    <h2>Autor:</h2>
+    <li *ngFor="let own of user.ownCourses" class="list-group-item">
+      <a [routerLink]="['/courses/show']" [queryParams]="{ id: own}">{{own}}</a>
+    </li>
+    <i *ngIf="!user.ownCourses">Brak kursów użytkownika!</i>
+  </div>
+</div>
