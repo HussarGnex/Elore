@@ -7,8 +7,8 @@ Prosta wersja serwisu moodle. Umożliwia:
  - zarządzanie użytkownikami (administrator)
 
  Użyte technologie to:
-    - Angular
-    - Node .js
-    - Express .js
-    - Mongoose
-    - Bootstrap
+ - Angular
+ - Node .js
+ - Express .js
+ - Mongoose
+ - Bootstrap
